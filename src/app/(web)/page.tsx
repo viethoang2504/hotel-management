@@ -1,6 +1,12 @@
+import HeroSection from "@/components/HeroSection/HeroSection";
+
 const Home = () => {
   return <>
-  {/* Hero Section */}
+    <HeroSection />
+    {/* Page Search */}
+    {/* Featured Room */}
+    {/* Gallery */}
+    {/* News Letter */}
   </>;
 }
 
