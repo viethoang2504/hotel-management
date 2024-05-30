@@ -4,7 +4,7 @@ import { FC } from 'react';
 import Image from 'next/image';
 
 // import { Room } from '@/models/room';
-import { Room } from '@/app/models/room';
+import { Room } from '@/models/room';
 import Link from 'next/link';
 
 type Props = {
