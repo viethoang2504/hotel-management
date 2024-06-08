@@ -29,11 +29,11 @@ const Rooms = () => {
   const { data, error, isLoading } = useSWR('get/hotelRooms', featchData);
 
   if (error) {
-    throw new Error('Cannot featch data');
+    throw new Error('Cannot fetch data');
   }
 
   if (typeof data === 'undefined' && !isLoading) {
-    throw new Error('Cannot featch data');
+    throw new Error('Cannot fetch data');
   }
 
   const fillterRooms = (rooms: Room[]) => {
