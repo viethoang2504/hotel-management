@@ -109,7 +109,7 @@ const hotelRoom = {
                 {
                     type: 'object',
                     fields: [
-                        { name: 'icom', title: 'Icon', type: 'string' },
+                        { name: 'icon', title: 'Icon', type: 'string' },
                         { name: 'amenity', title: 'Amenity', type: 'string' },
                     ],
                 },
