@@ -13,6 +13,9 @@ import { BsJournalBookmarkFill } from "react-icons/bs"
 import { GiMoneyStack } from "react-icons/gi"
 import Table from "@/components/Table/Table"
 import Chart from "@/components/Chart/Chart"
+import RatingModal from "@/components/RatingModal/RatingModal"
+import BackDrop from "@/components/BackDrop/BackDrop"
+import toast from "react-hot-toast"
 
 const UserDetails = (props: { params: { id: string } }) => {
 
@@ -24,7 +27,44 @@ const UserDetails = (props: { params: { id: string } }) => {
         "bookings" | "amount" | "ratings"
     >("bookings")
 
-    const [roomId, setRoomId] = useState<string | null> (null)
+    const [roomId, setRoomId] = useState<string | null>(null)
+    const [isRatingVisible, setIsRatingVisible] = useState(false)
+    const [isSubmittingReview, setIsSubmittingReview] = useState(false)
+    const [ratingValue, setRatingValue] = useState<number | null>(0)
+    const [ratingText, setRatingText] = useState("")
+
+    const toggleRatingModal = () => setIsRatingVisible(prevState => !prevState)
+
+    const reviewSubmidHandler = async () => {
+        if (!ratingText.trim().length || !ratingValue) {
+            return toast.error("Please provide a rating text and a rating")
+        }
+
+        if (!roomId) {
+            toast.error("Id not provided")
+        }
+
+        setIsSubmittingReview(true)
+
+        try {
+            const { data } = await axios.post('/api/users', {
+                reviewText: ratingText,
+                ratingValue,
+                roomId
+            })
+            console.log(data)
+            toast.success("Review Submitted")
+        } catch (error) {
+            console.log(error)
+            toast.error("Review Failed")
+        } finally {
+            setRatingText('');
+            setRatingValue(null)
+            setRoomId(null)
+            setIsSubmittingReview(false)
+            setIsRatingVisible(false)
+        }
+    }
 
     const fetchUserBooking = async () => getUserBookings(userId)
     const fetchUserData = async () => {
@@ -97,6 +137,7 @@ const UserDetails = (props: { params: { id: string } }) => {
                             height={5000}
                             src={userData.image}
                             alt="User Name"
+                            priority
                         />
                     </div>
                     <p className="block w-fit md:hidden text-sm py-2">
@@ -148,13 +189,18 @@ const UserDetails = (props: { params: { id: string } }) => {
                     </nav>
 
                     {currentNav === "bookings" ? (
-                        userBookings && <Table bookingDetails={userBookings} setRoomId={setRoomId} />
+                        userBookings && (<Table
+                            bookingDetails={userBookings}
+                            setRoomId={setRoomId}
+                            toggleRatingModal={toggleRatingModal}
+                        />
+                        )
                     ) : (
                         <></>
                     )}
 
                     {currentNav === "amount" ? (
-                        userBookings && <Chart 
+                        userBookings && <Chart
                             userBookings={userBookings}
                         />
                     ) : (
@@ -162,6 +208,18 @@ const UserDetails = (props: { params: { id: string } }) => {
                     )}
                 </div>
             </div>
+
+            <RatingModal
+                isOpen={isRatingVisible}
+                ratingValue={ratingValue}
+                setRatingValue={setRatingValue}
+                ratingText={ratingText}
+                setRatingText={setRatingText}
+                reviewSubmidHandler={reviewSubmidHandler}
+                isSubmittingReview={isSubmittingReview}
+                toggleRatingModal={toggleRatingModal}
+            />
+            <BackDrop isOpen={isRatingVisible} />
         </div>
     )
 }
