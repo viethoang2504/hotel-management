@@ -46,7 +46,7 @@ const BookRoomCta: FC<Props> = props => {
         if (!checkinDate || !checkoutDate) return 0;
         const timeDiff = checkoutDate.getTime() - checkinDate.getTime();
         const noOfDays = Math.ceil(timeDiff / (24 * 60 * 60 * 1000))
-        return noOfDays;
+        return noOfDays + 1;
     }
 
     return (
@@ -138,10 +138,10 @@ const BookRoomCta: FC<Props> = props => {
                 </div>
             </div>
             {calcNoOfDays() > 0 ? <p className="mt-3">
-                Total Days: {calcNoOfDays() + 1}
+                Total Days: {calcNoOfDays()}
             </p> : <></>}
             {calcNoOfDays() > 0 ? <p className="mt-3">
-                Total Price: $ {calcNoOfDays() * discountPrice + discountPrice}
+                Total Price: $ {calcNoOfDays() * discountPrice}
             </p> : <></>}
 
             <button
