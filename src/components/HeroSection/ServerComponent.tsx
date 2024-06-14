@@ -22,6 +22,7 @@ export const section2 = (
                     width={5472}
                     height={3648}
                     className="img scale-animation"
+                    priority
                 />
             </div>
 
@@ -33,6 +34,7 @@ export const section2 = (
                         width={300}
                         height={300}
                         className="img scale-animation"
+                        priority
                     />
                 </div>
                 <div className="rounded-2xl overflow-hidden">
@@ -42,6 +44,7 @@ export const section2 = (
                         width={300}
                         height={300}
                         className="img scale-animation"
+                        priority
                     />
                 </div>
             </div>
