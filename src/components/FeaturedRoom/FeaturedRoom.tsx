@@ -44,7 +44,7 @@ const FeaturedRoom: FC<Props> = props => {
       <div className='md:py-10 md:w-1/2 text-left'>
         <h3 className='font-heading mb-12'>Featured Room</h3>
 
-        <p className='font-normal max-w-md'>{featuredRoom.description}</p>
+        <p className='font-normal max-w-md'>{featuredRoom.description.slice(0, 300)}...</p>
 
         <div className='flex flex-col md:flex-row md:items-end justify-between mt-5'>
           <div className='flex mb-3 md:mb-0'>
@@ -57,7 +57,7 @@ const FeaturedRoom: FC<Props> = props => {
             <div className='flex gap-3 flex-col items-center justify-center mr-4'>
               <p className='text-xs lg:text-xl text-center'>Discount</p>
               <p className='md:font-bold flex font-medium text-lg xl:text-5xl'>
-                $ {featuredRoom.discount}
+                {featuredRoom.discount}%
               </p>
             </div>
           </div>

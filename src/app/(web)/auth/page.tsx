@@ -82,21 +82,21 @@ const Auth = () => {
 
         <form className='space-y-4 md:space-y-6' onSubmit={handleSubmit}>
           <input
-            type='email'
-            name='email'
-            placeholder='name@company.com'
-            required
-            className={inputStyles}
-            value={formData.email}
-            onChange={handleInputChange}
-          />
-          <input
             type='text'
             name='name'
             placeholder='John Doe'
             required
             className={inputStyles}
             value={formData.name}
+            onChange={handleInputChange}
+          />
+          <input
+            type='email'
+            name='email'
+            placeholder='name@company.com'
+            required
+            className={inputStyles}
+            value={formData.email}
             onChange={handleInputChange}
           />
           <input
@@ -119,7 +119,7 @@ const Auth = () => {
         </form>
 
         <button onClick={loginHandler} className='text-blue-700 underline'>
-          login
+          Login
         </button>
       </div>
     </section>

@@ -8,7 +8,7 @@ const Footer = () => {
     <footer className="mt-16">
       <div className="container mx-auto px-4">
         <Link href='/' className="font-black text-tertiary-dark">
-            Hotelzz
+            Hotel NVH
         </Link>
 
         <h4 className="font-semibold text-[40px] py-6">Contact</h4>

@@ -56,7 +56,7 @@ const RoomDetails = (props: { params: { slug: string } }) => {
         if (!checkinDate || !checkoutDate) return;
         const timeDiff = checkoutDate.getTime() - checkinDate.getTime();
         const noOfDays = Math.ceil(timeDiff / (24 * 60 * 60 * 1000))
-        return noOfDays;
+        return noOfDays + 1;
     }
 
     const handleBookNowClick = async () => {
