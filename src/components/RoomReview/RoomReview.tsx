@@ -62,7 +62,9 @@ const RoomReview: FC<{ roomId: string }> = ({ roomId }) => {
                     </div>
 
                     <p>{review.text}</p>
-                    <p style={{ fontSize: '0.8rem', fontStyle: 'italic' }}>Created at {formatDateToDDMMYYYY(review._createdAt)}</p>
+                    <p className="text-sm italic">
+                        Created at {formatDateToDDMMYYYY(review._createdAt)}
+                    </p>
                 </div>
             ))}
         </>

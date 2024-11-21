@@ -82,6 +82,7 @@ const BookRoomCta: FC<Props> = props => {
                         dateFormat='dd/MM/yyyy'
                         minDate={new Date()}
                         id="check-in-date"
+                        portalId="root"
                         className="w-full border text-black border-gray-300 rounded-lg p-2.5 focus:ring-primary focus:border-primary"
                     />
                 </div>
@@ -96,6 +97,7 @@ const BookRoomCta: FC<Props> = props => {
                         disabled={!checkinDate}
                         minDate={calcMinCheckoutDate()}
                         id="check-out-date"
+                        portalId="root"
                         className="w-full border text-black border-gray-300 rounded-lg p-2.5 focus:ring-primary focus:border-primary"
                     />
                 </div>
