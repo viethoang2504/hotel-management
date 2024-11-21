@@ -13,7 +13,7 @@ export type CreateReviewDto = {
 
 export type Review = {
     text: string;
-    user: { name: string }
+    user: { name: string, image: string }
     userRating: number;
     _createdAt: Date;
     _id: string;
